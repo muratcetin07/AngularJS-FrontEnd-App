@@ -1,0 +1,46 @@
+<form #form="ngForm" autocomplete="false" (ngSubmit)="onSubmit(form)">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label><b>Customer</b> </label>
+                <select name="CustomerId" #CustomerId="ngModel" [(ngModel)]="orderModel.CustomerId" class="form-control" 
+                [class.is-invalid]="!isValid">
+                    <option value="0">- Select -</option>
+                    <option *ngFor="let cus of customerList" value="{{cus.customerId}}">{{cus.customerName}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><b>Item Name</b> </label>
+                <input name="ItemName" #OrderNo="ngModel" [(ngModel)]="orderModel.ItemName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label><b>Payment Type</b></label>
+                <select name="PaymentMethod" #CustomerId="ngModel" [(ngModel)]="orderModel.PaymentMethod" class="form-control">
+                    <option value="0">-Select-</option>
+                    <option value="1">Cash</option>
+                    <option value="2">Credit Card</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label><b>Total</b></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><b>TL</b></div>
+                    </div>
+                    <input name="TotalAmount" #OrderNo="ngModel" [(ngModel)]="orderModel.TotalAmount" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save"></i> Save</button>
+            <a class="btn btn-danger ml-1" routerLink="/orders">
+                <i class="fa fa-table"></i> Orders</a>
+    </div>
+    
+</form>
